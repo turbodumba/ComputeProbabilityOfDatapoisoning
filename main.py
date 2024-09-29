@@ -4,8 +4,7 @@ import os
 
 os.environ['OMP_NUM_THREADS'] = '5'
 
-# datasets = ['cardiovascular_risk.csv', 'obesityDataSet.csv', 'salary.csv']
-datasets = ['salary_2500.csv']
+datasets = ['cardiovascular_risk.csv', 'obesityDataSet.csv', 'salary_2500.csv']
 poisoned_datasets = [dataset.replace('.csv', '_Poisoned.csv') for dataset in datasets]
 # cardioVascularCategoryColumns = ['TenYearCHD', 'education', 'sex', 'is_smoking', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes']
 cardioVascularCategoryColumns = ['TenYearCHD']
@@ -24,26 +23,18 @@ n = 'numerical'
 
 datasets_dict = {
     datasets[0]: {
+        c: cardioVascularCategoryColumns,
+        n: cardioVascularNumericalColumns
+    },
+    datasets[1]: {
+        c: obesityDataSetCategoryColumns,
+        n: obesityDataSetNumericalColumns
+    },
+    datasets[2]: {
         c: salaryDatasetCategoryColumns,
         n: salaryDatasetNumericalColumns
     }
 }
-
-
-# datasets_dict = {
-#     datasets[0]: {
-#         c: cardioVascularCategoryColumns,
-#         n: cardioVascularNumericalColumns
-#     },
-#     datasets[1]: {
-#         c: obesityDataSetCategoryColumns,
-#         n: obesityDataSetNumericalColumns
-#     },
-#     datasets[2]: {
-#         c: salaryDatasetCategoryColumns,
-#         n: salaryDatasetNumericalColumns
-#     }
-# }
 
 
 def poisonDatasets(datasetsList, percentage, noiselvl, datasetsdict):
@@ -83,7 +74,6 @@ if __name__ == '__main__':
           " noise_level: ", noise_level, " and increment: ", increment)
 
     originalList = getScores(datasets, datasets_dict)
-    # originalList = [0.028152836874452913, 0.0528070817428152, 0.04211127376877814]
     print("=== The original scores finished calculating ===")
     poisonedList = []
     for i in range(iterations):
