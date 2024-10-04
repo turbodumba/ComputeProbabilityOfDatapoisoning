@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Datasets\Housing_Poisoned.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Datasets\UCI_Heart_Disease_Dataset_Combined.csv">
           <value>
             <Attribute>
@@ -18,6 +25,13 @@
           </value>
         </entry>
         <entry key="\Datasets\cardiovascular_risk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Datasets\cardiovascular_risk_Poisoned.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

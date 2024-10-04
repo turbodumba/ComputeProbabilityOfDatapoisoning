@@ -9,18 +9,8 @@ from sklearn.neighbors import LocalOutlierFactor
 from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
 from sklearn.svm import OneClassSVM
 
-method_weights = {
-    'Z-Score': 0.8,
-    'IQR': 0.7,
-    'Forest': 1.0,
-    'LOF': 0.9,
-    'K-Means': 0.6,
-    'Mahalanobis': 0.8,
-    'Frequency_based_outliers': 0.7,
-    'Kmodes_outliers': 0.6,
-    'DBSCAN_outliers': 0.9,
-    'Random_Forest_outliers': 1.0,
-}
+continuous_methods = ['Z-Score', 'IQR', 'Forest', 'LOF', 'K-Means', 'Mahalanobis']
+categorical_methods = ['Frequency_based_outliers', 'Kmodes_outliers', 'DBSCAN_outliers', 'Random_Forest_outliers']
 
 
 def convertToCategorical(df, categorical_columns):
@@ -128,7 +118,7 @@ def get_random_forest_outliers(df, n_estimators=150):
     return outliers
 
 
-# Density-based spatial clustering of applications method
+# Density-based spatial clustering of applications noise method
 def get_dbscan_outliers(df, eps=0.5, min_samples=5):
     df = df.to_frame()
     # Convert categorical data to one-hot encoded format
@@ -168,6 +158,8 @@ def preprocess_data(df, categorical_columns):
     for col in df.columns:
         if df[col].dtype == 'object':
             df[col] = df[col].astype('category').cat.codes
+        elif df[col].dtype == 'bool':
+            df[col] = df[col].astype(int)
 
     # Drop rows with missing values
     df = df.dropna()
@@ -270,37 +262,55 @@ def calculate_percentage(anomalies, total):
         return (percentage - 0.03) / (0.4 - 0.03)
 
 
-def get_score(dataset, measures, ensemble_outliers):
-    methods = {
-        'Z-Score': {'score': 0, 'count': 0, 'func': calculate_percentage, 'weight': method_weights.get('Z-Score', 1)},
-        'IQR': {'score': 0, 'count': 0, 'func': calculate_percentage, 'weight': method_weights.get('IQR', 1)},
-        'Forest': {'score': 0, 'count': 0, 'func': calculate_percentage, 'weight': method_weights.get('Forest', 1)},
-        'LOF': {'score': 0, 'count': 0, 'func': calculate_percentage, 'weight': method_weights.get('LOF', 1)},
-        'K-Means': {'score': 0, 'count': 0, 'func': calculate_percentage, 'weight': method_weights.get('K-Means', 1)},
-        'Mahalanobis': {'score': 0, 'count': 0, 'func': calculate_percentage,
-                        'weight': method_weights.get('Mahalanobis', 1)},
-        'Frequency_based_outliers': {'score': 0, 'count': 0, 'func': calculate_percentage,
-                                     'weight': method_weights.get('Frequency_based_outliers', 1)},
-        'Kmodes_outliers': {'score': 0, 'count': 0, 'func': calculate_percentage,
-                            'weight': method_weights.get('Kmodes_outliers', 1)},
-        'DBSCAN_outliers': {'score': 0, 'count': 0, 'func': calculate_percentage,
-                            'weight': method_weights.get('DBSCAN_outliers', 1)},
-        'Random_Forest_outliers': {'score': 0, 'count': 0, 'func': calculate_percentage,
-                                   'weight': method_weights.get('Random_Forest_outliers', 1)},
-    }
+def categorize_outliers(measures):
+    continuous_outliers = {}
+    categorical_outliers = {}
 
     for column, methods_in_column in measures.items():
+        for method, anomalies in methods_in_column.items():
+            if method in continuous_methods:  # Continuous
+                if column not in continuous_outliers:
+                    continuous_outliers[column] = {}
+                continuous_outliers[column][method] = anomalies
+            elif method in categorical_methods:  # Categorical
+                if column not in categorical_outliers:
+                    categorical_outliers[column] = {}
+                categorical_outliers[column][method] = anomalies
+
+    return continuous_outliers, categorical_outliers
+
+
+def calculate_category_score(dataset, outliers, total_columns):
+    scores = []
+    for column, methods_in_column in outliers.items():
         total = len(dataset[column])
         for method, anomalies in methods_in_column.items():
-            if method in methods:
-                actual_anomalies = [a for a in anomalies if a]
-                methods[method]['count'] += 1
-                methods[method]['score'] += methods[method]['weight'] * methods[method]['func'](actual_anomalies, total)
+            actual_anomalies = [a for a in anomalies if a]
+            score = calculate_percentage(actual_anomalies, total)
+            scores.append(score)
+    return sum(scores) / total_columns if total_columns > 0 else 0
 
-    scores = [methods[method]['score'] / methods[method]['count'] for method in methods if methods[method]['count'] > 0]
+
+def get_score(dataset, measures, ensemble_outliers, categoricalColumns, numericalColumns):
+    num_categorical = len(categoricalColumns)
+    num_numerical = len(numericalColumns)
+    total_columns = num_categorical + num_numerical
+
+    categorical_weight = num_categorical / total_columns if total_columns > 0 else 0
+    numerical_weight = num_numerical / total_columns if total_columns > 0 else 0
+
+    continuous_outliers, categorical_outliers = categorize_outliers(measures)
+
+    # Calculate scores for each category
+    categorical_scores = calculate_category_score(dataset, categorical_outliers, len(categoricalColumns))
+    continuous_scores = calculate_category_score(dataset, continuous_outliers, len(numericalColumns))
+
     actual_ensemble_outliers = [a for a in ensemble_outliers if a]
-    scores.append(calculate_percentage(actual_ensemble_outliers, len(dataset)))
-    return sum(scores) / len(scores) if scores else 0
+    ensemble_score = calculate_percentage(actual_ensemble_outliers, len(dataset))
+
+    combined_score = (numerical_weight * continuous_scores + categorical_weight * categorical_scores + ensemble_score) / 3
+    normalized_score = min(max(combined_score, 0), 1)
+    return normalized_score
 
 
 def calculateStatistics(filepath, categoricalColumns, numericalColumns):
@@ -312,4 +322,4 @@ def calculateStatistics(filepath, categoricalColumns, numericalColumns):
     dataset = pd.read_csv(filepath)
     convertToCategorical(dataset, categoricalColumns)
     measures, ensemble_outliers = detect_outliers(dataset, categoricalColumns, numericalColumns)
-    return get_score(dataset, measures, ensemble_outliers)
+    return get_score(dataset, measures, ensemble_outliers, categoricalColumns, numericalColumns)

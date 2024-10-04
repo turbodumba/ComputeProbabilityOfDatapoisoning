@@ -43,28 +43,15 @@ def poison_with_out_of_distribution_data(dataset, columns_to_poison, ood_percent
     return poisoned_dataset
 
 
-def poison_with_data_duplication(dataset, duplication_percentage=0.1, noise_level=0.01):
-    num_duplicates = int(duplication_percentage * len(dataset))
-    duplicate_indices = np.random.choice(dataset.index, size=num_duplicates, replace=False)
-
-    duplicated_data = dataset.loc[duplicate_indices].copy()
-    noise = np.random.normal(0, noise_level, duplicated_data.shape)
-    duplicated_data += noise
-
-    poisoned_dataset = pd.concat([dataset, duplicated_data], ignore_index=True)
-    return poisoned_dataset
-
-
 def poison_numerical_columns(dataset, columns_to_poison, manipulation_percentage, noise_level):
     poisoned_dataset = poison_with_random_noise(dataset, columns_to_poison, manipulation_percentage,
                                                 noise_level)
     poisoned_dataset = poison_with_out_of_distribution_data(poisoned_dataset, columns_to_poison,
                                                             manipulation_percentage)
-    # poisoned_dataset = poison_with_data_duplication(poisoned_dataset, manipulation_percentage, noise_level)
     return poisoned_dataset
 
 
-def createPoisonedDatasets(filepath, categoricalColumns, numericalColumns, manipulation_percentage=0.1,
+def createPoisonedDatasets(filepath, targetColumns, numericalColumns, manipulation_percentage=0.1,
                            noise_level=0.01):
     np.random.seed(42)
     # Get the absolute path to the Datasets folder
@@ -76,7 +63,7 @@ def createPoisonedDatasets(filepath, categoricalColumns, numericalColumns, manip
 
     # Read the CSV file
     dataset = pd.read_csv(filepath)
-    dataset = poison_labels(dataset, categoricalColumns, manipulation_percentage)
+    dataset = poison_labels(dataset, targetColumns, manipulation_percentage)
     dataset = poison_numerical_columns(dataset, numericalColumns, manipulation_percentage, noise_level)
     dataset.to_csv(filepath.replace('.csv', '_Poisoned.csv'), index=False)
     return None

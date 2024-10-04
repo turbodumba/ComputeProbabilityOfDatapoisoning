@@ -2,30 +2,32 @@ from main import poisonDatasets, getScores, printScoresAndDifferences
 
 testdatasets = ['Housing.csv', 'lungcancerpatient.csv', 'seattle-weather.csv']
 poisoned_testdatasets = [dataset.replace('.csv', '_Poisoned.csv') for dataset in testdatasets]
-#housingCategoryColumns = ['mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'prefarea', 'furnishingstatus']
-housingCategoryColumns = []
+housingCategoryColumns = ['mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'prefarea', 'furnishingstatus']
 housingNumericalColumns = ['price', 'area', 'bedrooms', 'bathrooms', 'stories', 'parking']
-#lungcancerCategoryColumns = ['Gender', 'Air Pollution', 'Alcohol use','Dust Allergy', 'OccuPational Hazards', 'Genetic Risk','chronic Lung Disease', 'Balanced Diet', 'Obesity', 'Smoking','Passive Smoker', 'Chest Pain', 'Coughing of Blood', 'Fatigue','Weight Loss', 'Shortness of Breath', 'Wheezing','Swallowing Difficulty', 'Clubbing of Finger Nails', 'Frequent Cold','Dry Cough', 'Snoring', 'Level']
-lungcancerCategoryColumns = ['Level']
+lungcancerCategoryColumns = ['Level', 'Gender', 'Air Pollution', 'Alcohol use','Dust Allergy', 'OccuPational Hazards', 'Genetic Risk','chronic Lung Disease', 'Balanced Diet', 'Obesity', 'Smoking','Passive Smoker', 'Chest Pain', 'Coughing of Blood', 'Fatigue','Weight Loss', 'Shortness of Breath', 'Wheezing','Swallowing Difficulty', 'Clubbing of Finger Nails', 'Frequent Cold','Dry Cough', 'Snoring']
 lungcancerNumericalColumns = ['Age']
 weatherCategoryColumns = ['weather']
 weatherNumericalColumns = ['precipitation', 'temp_max', 'temp_min', 'wind']
 
 c = 'category'
 n = 'numerical'
+t = 'targetCategorical'
 
 testdataset_dict = {
     testdatasets[0]: {
         c: housingCategoryColumns,
-        n: housingNumericalColumns
+        n: housingNumericalColumns,
+        t: False
     },
     testdatasets[1]: {
         c: lungcancerCategoryColumns,
-        n: lungcancerNumericalColumns
+        n: lungcancerNumericalColumns,
+        t: True
     },
     testdatasets[2]: {
         c: weatherCategoryColumns,
-        n: weatherNumericalColumns
+        n: weatherNumericalColumns,
+        t: True
     }
 }
 

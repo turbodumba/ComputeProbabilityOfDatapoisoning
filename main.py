@@ -6,40 +6,44 @@ os.environ['OMP_NUM_THREADS'] = '5'
 
 datasets = ['cardiovascular_risk.csv', 'obesityDataSet.csv', 'salary_2500.csv']
 poisoned_datasets = [dataset.replace('.csv', '_Poisoned.csv') for dataset in datasets]
-# cardioVascularCategoryColumns = ['TenYearCHD', 'education', 'sex', 'is_smoking', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes']
-cardioVascularCategoryColumns = ['TenYearCHD']
+cardioVascularCategoryColumns = ['TenYearCHD', 'education', 'sex', 'is_smoking', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes']
 cardioVascularNumericalColumns = ['age', 'cigsPerDay', 'totChol', 'sysBP', 'diaBP', 'BMI',
                                   'heartRate', 'glucose']
-# obesityDataSetCategoryColumns = ['NObeyesdad', 'Gender', 'CALC', 'FAVC', 'SCC', 'SMOKE', 'family_history_with_overweight', 'CAEC', 'MTRANS']
-obesityDataSetCategoryColumns = ['NObeyesdad']
+obesityDataSetCategoryColumns = ['NObeyesdad', 'Gender', 'CALC', 'FAVC', 'SCC', 'SMOKE', 'family_history_with_overweight', 'CAEC', 'MTRANS']
 obesityDataSetNumericalColumns = ['Age', 'Height', 'Weight', 'FCVC', 'NCP', 'CH2O', 'FAF', 'TUE']
-# salaryDatasetCategoryColumns = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country', 'salary']
-salaryDatasetCategoryColumns = ['salary']
+salaryDatasetCategoryColumns = ['salary', 'workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
 salaryDatasetNumericalColumns = ['age', 'fnlwgt', 'education-num', 'capital-gain', 'capital-loss',
                                  'hours-per-week']
 
 c = 'category'
 n = 'numerical'
+t = 'targetCategorical'
 
 datasets_dict = {
     datasets[0]: {
         c: cardioVascularCategoryColumns,
-        n: cardioVascularNumericalColumns
+        n: cardioVascularNumericalColumns,
+        t: True
     },
     datasets[1]: {
         c: obesityDataSetCategoryColumns,
-        n: obesityDataSetNumericalColumns
+        n: obesityDataSetNumericalColumns,
+        t: True
     },
     datasets[2]: {
         c: salaryDatasetCategoryColumns,
-        n: salaryDatasetNumericalColumns
+        n: salaryDatasetNumericalColumns,
+        t: True
     }
 }
 
 
 def poisonDatasets(datasetsList, percentage, noiselvl, datasetsdict):
     for dataset in datasetsList:
-        createPoisonedDatasets(dataset, datasetsdict[dataset][c], datasetsdict[dataset][n],
+        target = []
+        if datasetsdict[dataset][t]:
+            target = [datasetsdict[dataset][c][0]]
+        createPoisonedDatasets(dataset, target, datasetsdict[dataset][n],
                                percentage, noiselvl)
 
 
