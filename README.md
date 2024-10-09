@@ -65,5 +65,5 @@ Possible parameters:
 np.random.seed(42) was used in the data poisoning class, to ensure the poisoning was done in the same way for the
 different tests.
 To create the graphs with the CreateGraph class, one has to fill in the Combined_Scores.txt file with the results that shoul be plotted.
-Copy and Paste from "=== Original Scores ===" to ==== DONE ====
+Copy and Paste from "=== Original Scores ===" to "==== DONE ====".
 
