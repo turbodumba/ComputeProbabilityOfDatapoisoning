@@ -1,23 +1,23 @@
-#Computing the Probability of Data-poisoning in the dataset.
+# Computing the Probability of Data-poisoning in the dataset.
 This is an algorithm, which was designed to compute a score, which is representative of the probability of poisoned data
 being a part of the dataset.
 It was developed as part of a Bachelor's thesis which is called "Computing the Trustworthiness Level of AI-based Models
 Trained with Continuous Data".
 
-##Prerequisites
+## Prerequisites
 The Python version which was used to develop this code is the version: 3.12.6
 
 The following packages and versions were used during the development of the algorithm and need to be installed in order
 to make the algorithm work correctly:
--Numpy: Version 1.26.4 (https://pypi.org/project/numpy/1.26.4/)
--Pandas: Version 2.2.2 (https://pypi.org/project/pandas/2.2.2/)
--Scikit-Learn: Version 1.5.1 (https://pypi.org/project/scikit-learn/1.5.1/)
--KModes: Version 0.12.2 (https://pypi.org/project/kmodes/0.12.2)
+- Numpy: Version 1.26.4 (https://pypi.org/project/numpy/1.26.4/)
+- Pandas: Version 2.2.2 (https://pypi.org/project/pandas/2.2.2/)
+- Scikit-Learn: Version 1.5.1 (https://pypi.org/project/scikit-learn/1.5.1/)
+- KModes: Version 0.12.2 (https://pypi.org/project/kmodes/0.12.2)
 
-##Installation
+## Installation
 There is no installation required, apart from being able to run Python code and being able to clone this repository.
 
-##Usage
+## Usage
 To use the algorithm, one can use the test.py class as an example of how to run the algorithm on whatever datasets the
 user wants to run it on.
 To use it for new datasets, the following steps can be taken:
@@ -61,7 +61,7 @@ Possible parameters:
 - kMeans_threshold: This represents the threshold set for the clusters in the KMeans algorithm to be classified as
   outliers. Default value is 0.05 (Float)
 
-##Testing:
+## Testing:
 np.random.seed(42) was used in the data poisoning class, to ensure the poisoning was done in the same way for the
 different tests.
 To create the graphs with the CreateGraph class, one has to fill in the Combined_Scores.txt file with the results that shoul be plotted.
