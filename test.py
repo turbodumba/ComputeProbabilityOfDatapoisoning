@@ -45,5 +45,5 @@ if __name__ == '__main__':
         poisonDatasets(testdatasets, percentage_at_start + i * increment, noise_level, testdataset_dict)
         poisonedList.append(getScores(poisoned_testdatasets, testdataset_dict))
         print("=== The ", i, " iteration score finished calculating ===")
-    printScoresAndDifferences(testdatasets, originalList, poisonedList, percentage_at_start, increment)
+    printScoresAndDifferences(testdatasets, originalList, poisonedList, percentage_at_start, increment, "test_output.txt")
     print("==== DONE ====")

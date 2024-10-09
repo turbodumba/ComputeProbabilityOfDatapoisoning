@@ -1,174 +1,175 @@
 Combined Scores:
 
 === Original Scores ===
-Housing.csv  got this score:  0.3078576106099042
-lungcancerpatient.csv  got this score:  0.6015015015015016
-seattle-weather.csv  got this score:  0.2600711594551431
+Housing.csv got this score: 0.29471602866098273
+lungcancerpatient.csv got this score: 0.5680180180180181
+seattle-weather.csv got this score: 0.2589402544228006
 === Poisoned Scores ===
 Poisoned Datasets with manipulating percentage:  0.05
-Housing.csv  got this difference:  0.09320563660718922
-lungcancerpatient.csv  got this difference:  0.0734591734591733
-seattle-weather.csv  got this difference:  0.017970115196301095
+Housing.csv got this poisoned score: 0.3331201023508716
+lungcancerpatient.csv got this poisoned score: 0.5215036465036464
+seattle-weather.csv got this poisoned score: 0.2417491807322316
 Poisoned Datasets with manipulating percentage:  0.1
-Housing.csv  got this difference:  0.1630438803249757
-lungcancerpatient.csv  got this difference:  0.09038356538356529
-seattle-weather.csv  got this difference:  0.07311080907218948
+Housing.csv got this poisoned score: 0.37097865812390013
+lungcancerpatient.csv got this poisoned score: 0.4362203112203113
+seattle-weather.csv got this poisoned score: 0.29788705943030774
 Poisoned Datasets with manipulating percentage:  0.15
-Housing.csv  got this difference:  0.21450328555290893
-lungcancerpatient.csv  got this difference:  0.0891728685206945
-seattle-weather.csv  got this difference:  0.16523986585588224
+Housing.csv got this poisoned score: 0.4281659393480479
+lungcancerpatient.csv got this poisoned score: 0.6391336989163077
+seattle-weather.csv got this poisoned score: 0.3726404976404976
 Poisoned Datasets with manipulating percentage:  0.2
-Housing.csv  got this difference:  0.15825635091690138
-lungcancerpatient.csv  got this difference:  0.08662412412412412
-seattle-weather.csv  got this difference:  0.2008344695052492
+Housing.csv got this poisoned score: 0.43552656396693096
+lungcancerpatient.csv got this poisoned score: 0.6274399399399399
+seattle-weather.csv got this poisoned score: 0.3918184014019725
 Poisoned Datasets with manipulating percentage:  0.25
-Housing.csv  got this difference:  0.1447542693147511
-lungcancerpatient.csv  got this difference:  0.08651651651651648
-seattle-weather.csv  got this difference:  0.23924699769433938
+Housing.csv got this poisoned score: 0.4363736830697183
+lungcancerpatient.csv got this poisoned score: 0.5891591591591591
+seattle-weather.csv got this poisoned score: 0.43301165349358123
 Poisoned Datasets with manipulating percentage:  0.3
-Housing.csv  got this difference:  0.17599006372136528
-lungcancerpatient.csv  got this difference:  0.11781589281589278
-seattle-weather.csv  got this difference:  0.2593523153251444
+Housing.csv got this poisoned score: 0.4269974015736728
+lungcancerpatient.csv got this poisoned score: 0.6346731346731348
+seattle-weather.csv got this poisoned score: 0.43234419253376605
 Poisoned Datasets with manipulating percentage:  0.35
-Housing.csv  got this difference:  0.1610559906759121
-lungcancerpatient.csv  got this difference:  0.11591869647425201
-seattle-weather.csv  got this difference:  0.28072223316026707
+Housing.csv got this poisoned score: 0.43973801116658257
+lungcancerpatient.csv got this poisoned score: 0.6438382827271716
+seattle-weather.csv got this poisoned score: 0.45929134002156324
 Poisoned Datasets with manipulating percentage:  0.4
-Housing.csv  got this difference:  0.1722292914953465
-lungcancerpatient.csv  got this difference:  0.11463963963963952
-seattle-weather.csv  got this difference:  0.2710812437576268
+Housing.csv got this poisoned score: 0.4615738835922323
+lungcancerpatient.csv got this poisoned score: 0.5362237237237237
+seattle-weather.csv got this poisoned score: 0.47610740324676754
 Poisoned Datasets with manipulating percentage:  0.45
-Housing.csv  got this difference:  0.15763186428614373
-lungcancerpatient.csv  got this difference:  0.1126721549135341
-seattle-weather.csv  got this difference:  0.2676208338335834
+Housing.csv got this poisoned score: 0.5178381887242646
+lungcancerpatient.csv got this poisoned score: 0.6944962203582893
+seattle-weather.csv got this poisoned score: 0.4514695999115263
 Poisoned Datasets with manipulating percentage:  0.5
-Housing.csv  got this difference:  0.2636839583152453
-lungcancerpatient.csv  got this difference:  0.11021021021021016
-seattle-weather.csv  got this difference:  0.2576476192879679
+Housing.csv got this poisoned score: 0.5089127353509239
+lungcancerpatient.csv got this poisoned score: 0.6930430430430431
+seattle-weather.csv got this poisoned score: 0.45380241035193114
 Poisoned Datasets with manipulating percentage:  0.55
-Housing.csv  got this difference:  0.2063949750805702
-lungcancerpatient.csv  got this difference:  0.10819771384287513
-seattle-weather.csv  got this difference:  0.25858400393268083
+Housing.csv got this poisoned score: 0.5823756676837246
+lungcancerpatient.csv got this poisoned score: 0.6885232006199749
+seattle-weather.csv got this poisoned score: 0.44036624964186805
 Poisoned Datasets with manipulating percentage:  0.6
-Housing.csv  got this difference:  0.2047689891726589
-lungcancerpatient.csv  got this difference:  0.1069444444444444
-seattle-weather.csv  got this difference:  0.2502100189668888
+Housing.csv got this poisoned score: 0.5445729780592167
+lungcancerpatient.csv got this poisoned score: 0.6932010135135135
+seattle-weather.csv got this poisoned score: 0.4707328638008998
 Poisoned Datasets with manipulating percentage:  0.65
-Housing.csv  got this difference:  0.14207716460984615
-lungcancerpatient.csv  got this difference:  0.10716625716625716
-seattle-weather.csv  got this difference:  0.24896738909195565
+Housing.csv got this poisoned score: 0.5041260135809635
+lungcancerpatient.csv got this poisoned score: 0.6944785694785695
+seattle-weather.csv got this poisoned score: 0.49126761616388165
 Poisoned Datasets with manipulating percentage:  0.7
-Housing.csv  got this difference:  0.1338398320188402
-lungcancerpatient.csv  got this difference:  0.10521109344638746
-seattle-weather.csv  got this difference:  0.24669337847574085
+Housing.csv got this poisoned score: 0.5159128226082871
+lungcancerpatient.csv got this poisoned score: 0.6957251369016074
+seattle-weather.csv got this poisoned score: 0.4568441982054548
 Poisoned Datasets with manipulating percentage:  0.75
-Housing.csv  got this difference:  0.147407565844756
-lungcancerpatient.csv  got this difference:  0.10475117975117965
-seattle-weather.csv  got this difference:  0.24729848858604958
+Housing.csv got this poisoned score: 0.48854755150662815
+lungcancerpatient.csv got this poisoned score: 0.6907121407121407
+seattle-weather.csv got this poisoned score: 0.4791601460615545
 Poisoned Datasets with manipulating percentage:  0.8
-Housing.csv  got this difference:  0.15236902392865698
-lungcancerpatient.csv  got this difference:  0.10504671338004679
-seattle-weather.csv  got this difference:  0.2443746769522374
+Housing.csv got this poisoned score: 0.5481546001423677
+lungcancerpatient.csv got this poisoned score: 0.6930263596930263
+seattle-weather.csv got this poisoned score: 0.4696356303050864
 Poisoned Datasets with manipulating percentage:  0.85
-Housing.csv  got this difference:  0.19265666513372937
-lungcancerpatient.csv  got this difference:  0.10291169547926304
-seattle-weather.csv  got this difference:  0.2426131118069707
+Housing.csv got this poisoned score: 0.5348168681502016
+lungcancerpatient.csv got this poisoned score: 0.6932980277574871
+seattle-weather.csv got this poisoned score: 0.5016904395142737
 Poisoned Datasets with manipulating percentage:  0.9
-Housing.csv  got this difference:  0.19813873583319136
-lungcancerpatient.csv  got this difference:  0.10231152204836436
-seattle-weather.csv  got this difference:  0.24244605335675867
+Housing.csv got this poisoned score: 0.5329342720647068
+lungcancerpatient.csv got this poisoned score: 0.6956495969653864
+seattle-weather.csv got this poisoned score: 0.5006249492735979
 Poisoned Datasets with manipulating percentage:  0.95
-Housing.csv  got this difference:  0.20125391949369553
-lungcancerpatient.csv  got this difference:  0.10165550165550163
-seattle-weather.csv  got this difference:  0.2422875589984465
+Housing.csv got this poisoned score: 0.5736927714328844
+lungcancerpatient.csv got this poisoned score: 0.6985831985831986
+seattle-weather.csv got this poisoned score: 0.5007054104666464
 Poisoned Datasets with manipulating percentage:  1.0
-Housing.csv  got this difference:  0.1726525396250167
-lungcancerpatient.csv  got this difference:  0.10178303303303315
-seattle-weather.csv  got this difference:  0.24245765272459313
+Housing.csv got this poisoned score: 0.5329832302309366
+lungcancerpatient.csv got this poisoned score: 0.6946884384384383
+seattle-weather.csv got this poisoned score: 0.500807789308816
+==== DONE ====
 
 === Original Scores ===
-cardiovascular_risk.csv  got this score:  0.22399017271473776
-obesityDataSet.csv  got this score:  0.3763341740603701
-salary_2500.csv  got this score:  0.2836830425301202
+cardiovascular_risk.csv got this score: 0.2257713515638906
+obesityDataSet.csv got this score: 0.3808811040259754
+salary_2500.csv got this score: 0.27882486169115467
 === Poisoned Scores ===
 Poisoned Datasets with manipulating percentage:  0.05
-cardiovascular_risk.csv  got this difference:  0.06971997001225888
-obesityDataSet.csv  got this difference:  -0.006563043830543791
-salary_2500.csv  got this difference:  0.04757727957688379
+cardiovascular_risk.csv got this poisoned score: 0.28770940884704926
+obesityDataSet.csv got this poisoned score: 0.3324807872217089
+salary_2500.csv got this poisoned score: 0.32511321390039927
 Poisoned Datasets with manipulating percentage:  0.1
-cardiovascular_risk.csv  got this difference:  0.15507052337008703
-obesityDataSet.csv  got this difference:  0.027511075658112616
-salary_2500.csv  got this difference:  0.013096299607794903
+cardiovascular_risk.csv got this poisoned score: 0.358989686737676
+obesityDataSet.csv got this poisoned score: 0.37351350438445735
+salary_2500.csv got this poisoned score: 0.31595505224919135
 Poisoned Datasets with manipulating percentage:  0.15
-cardiovascular_risk.csv  got this difference:  0.1851556523871017
-obesityDataSet.csv  got this difference:  0.04596451523461087
-salary_2500.csv  got this difference:  0.019115020156521834
+cardiovascular_risk.csv got this poisoned score: 0.40556223702543276
+obesityDataSet.csv got this poisoned score: 0.431253874393553
+salary_2500.csv got this poisoned score: 0.3339809168499976
 Poisoned Datasets with manipulating percentage:  0.2
-cardiovascular_risk.csv  got this difference:  0.2748557486551453
-obesityDataSet.csv  got this difference:  0.0613305174070663
-salary_2500.csv  got this difference:  0.06790999194579711
+cardiovascular_risk.csv got this poisoned score: 0.4649460378294245
+obesityDataSet.csv got this poisoned score: 0.4396472132242319
+salary_2500.csv got this poisoned score: 0.329556650410838
 Poisoned Datasets with manipulating percentage:  0.25
-cardiovascular_risk.csv  got this difference:  0.30342347854860685
-obesityDataSet.csv  got this difference:  0.04717924704480947
-salary_2500.csv  got this difference:  0.04862723058732782
+cardiovascular_risk.csv got this poisoned score: 0.49267619436331095
+obesityDataSet.csv got this poisoned score: 0.4497211277191655
+salary_2500.csv got this poisoned score: 0.3728050920876033
 Poisoned Datasets with manipulating percentage:  0.3
-cardiovascular_risk.csv  got this difference:  0.348683794355781
-obesityDataSet.csv  got this difference:  0.08741194214673054
-salary_2500.csv  got this difference:  0.06761485222327196
+cardiovascular_risk.csv got this poisoned score: 0.49668651182943385
+obesityDataSet.csv got this poisoned score: 0.480766244721827
+salary_2500.csv got this poisoned score: 0.3569933345726386
 Poisoned Datasets with manipulating percentage:  0.35
-cardiovascular_risk.csv  got this difference:  0.3100796328347488
-obesityDataSet.csv  got this difference:  0.0775288108042046
-salary_2500.csv  got this difference:  0.07975940347460336
+cardiovascular_risk.csv got this poisoned score: 0.5070147299364035
+obesityDataSet.csv got this poisoned score: 0.5064734174432107
+salary_2500.csv got this poisoned score: 0.3460999552340003
 Poisoned Datasets with manipulating percentage:  0.4
-cardiovascular_risk.csv  got this difference:  0.34901646305522227
-obesityDataSet.csv  got this difference:  0.08806871793284737
-salary_2500.csv  got this difference:  0.05312559911123521
+cardiovascular_risk.csv got this poisoned score: 0.532397298815563
+obesityDataSet.csv got this poisoned score: 0.5045080912504024
+salary_2500.csv got this poisoned score: 0.39790050273321653
 Poisoned Datasets with manipulating percentage:  0.45
-cardiovascular_risk.csv  got this difference:  0.35080925038614996
-obesityDataSet.csv  got this difference:  0.05092353347415396
-salary_2500.csv  got this difference:  0.07479559071383607
+cardiovascular_risk.csv got this poisoned score: 0.587387937164178
+obesityDataSet.csv got this poisoned score: 0.497358084728327
+salary_2500.csv got this poisoned score: 0.4074675448502063
 Poisoned Datasets with manipulating percentage:  0.5
-cardiovascular_risk.csv  got this difference:  0.33899295886355707
-obesityDataSet.csv  got this difference:  0.051679622501603795
-salary_2500.csv  got this difference:  0.1074478802261028
+cardiovascular_risk.csv got this poisoned score: 0.555506770041768
+obesityDataSet.csv got this poisoned score: 0.4784908277903707
+salary_2500.csv got this poisoned score: 0.43569643836524014
 Poisoned Datasets with manipulating percentage:  0.55
-cardiovascular_risk.csv  got this difference:  0.33118700789052513
-obesityDataSet.csv  got this difference:  0.060482262684155186
-salary_2500.csv  got this difference:  0.08375791948588701
+cardiovascular_risk.csv got this poisoned score: 0.5888692630987151
+obesityDataSet.csv got this poisoned score: 0.49789432392265703
+salary_2500.csv got this poisoned score: 0.445391710491168
 Poisoned Datasets with manipulating percentage:  0.6
-cardiovascular_risk.csv  got this difference:  0.35494244654046214
-obesityDataSet.csv  got this difference:  0.09048201243391563
-salary_2500.csv  got this difference:  0.08006629239038587
+cardiovascular_risk.csv got this poisoned score: 0.5810188068252584
+obesityDataSet.csv got this poisoned score: 0.4923306748369021
+salary_2500.csv got this poisoned score: 0.4266801335870405
 Poisoned Datasets with manipulating percentage:  0.65
-cardiovascular_risk.csv  got this difference:  0.3461768441680969
-obesityDataSet.csv  got this difference:  0.06693140494012301
-salary_2500.csv  got this difference:  0.08717055797647716
+cardiovascular_risk.csv got this poisoned score: 0.5725853199043548
+obesityDataSet.csv got this poisoned score: 0.5131930075690526
+salary_2500.csv got this poisoned score: 0.4535702409519444
 Poisoned Datasets with manipulating percentage:  0.7
-cardiovascular_risk.csv  got this difference:  0.3421296858669529
-obesityDataSet.csv  got this difference:  0.08126605847592372
-salary_2500.csv  got this difference:  0.15110171867951144
+cardiovascular_risk.csv got this poisoned score: 0.5688761714525074
+obesityDataSet.csv got this poisoned score: 0.5124136776950077
+salary_2500.csv got this poisoned score: 0.4492892327089219
 Poisoned Datasets with manipulating percentage:  0.75
-cardiovascular_risk.csv  got this difference:  0.34014075548343004
-obesityDataSet.csv  got this difference:  0.10023835694064592
-salary_2500.csv  got this difference:  0.08475334169212534
+cardiovascular_risk.csv got this poisoned score: 0.5670341094380528
+obesityDataSet.csv got this poisoned score: 0.5221886190786474
+salary_2500.csv got this poisoned score: 0.4394555617159141
 Poisoned Datasets with manipulating percentage:  0.8
-cardiovascular_risk.csv  got this difference:  0.3475702251401055
-obesityDataSet.csv  got this difference:  0.09539359632184496
-salary_2500.csv  got this difference:  0.11947652272908921
+cardiovascular_risk.csv got this poisoned score: 0.5812167033492611
+obesityDataSet.csv got this poisoned score: 0.4900630001507942
+salary_2500.csv got this poisoned score: 0.41774461294034254
 Poisoned Datasets with manipulating percentage:  0.85
-cardiovascular_risk.csv  got this difference:  0.3461622968279757
-obesityDataSet.csv  got this difference:  0.0944264110332722
-salary_2500.csv  got this difference:  0.0956906614053668
+cardiovascular_risk.csv got this poisoned score: 0.5793729525795522
+obesityDataSet.csv got this poisoned score: 0.5427081446136955
+salary_2500.csv got this poisoned score: 0.46015563280224603
 Poisoned Datasets with manipulating percentage:  0.9
-cardiovascular_risk.csv  got this difference:  0.3447654037247878
-obesityDataSet.csv  got this difference:  0.10528107768837142
-salary_2500.csv  got this difference:  0.13491355659745236
+cardiovascular_risk.csv got this poisoned score: 0.5767178230698876
+obesityDataSet.csv got this poisoned score: 0.5228601786471817
+salary_2500.csv got this poisoned score: 0.460624720801712
 Poisoned Datasets with manipulating percentage:  0.95
-cardiovascular_risk.csv  got this difference:  0.3435188063187422
-obesityDataSet.csv  got this difference:  0.10011123035622282
-salary_2500.csv  got this difference:  0.10567469952727288
+cardiovascular_risk.csv got this poisoned score: 0.5756974079342501
+obesityDataSet.csv got this poisoned score: 0.5025545610779705
+salary_2500.csv got this poisoned score: 0.42063106013013624
 Poisoned Datasets with manipulating percentage:  1.0
-cardiovascular_risk.csv  got this difference:  0.34234300652761285
-obesityDataSet.csv  got this difference:  0.09222667647724081
-salary_2500.csv  got this difference:  0.09176446262114796
+cardiovascular_risk.csv got this poisoned score: 0.5735658247454177
+obesityDataSet.csv got this poisoned score: 0.5350429915523125
+salary_2500.csv got this poisoned score: 0.4513037456992621
 ==== DONE ====

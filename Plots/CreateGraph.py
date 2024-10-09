@@ -17,7 +17,7 @@ if __name__ == '__main__':
         elif 'Poisoned Datasets with manipulating percentage' in line:
             current_percentage = float(line.split(':  ')[1])
         elif 'got this difference' in line:
-            parts = line.split('  got this difference:  ')
+            parts = line.split('  got this poisoned score:  ')
             dataset = parts[0].strip()
             score = float(parts[1]) + original_scores[dataset]
             if dataset not in poisoned_scores:

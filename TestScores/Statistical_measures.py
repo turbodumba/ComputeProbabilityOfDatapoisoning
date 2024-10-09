@@ -77,7 +77,7 @@ def get_kmodes_outliers(data, n_clusters=3):
     km = KModes(n_clusters=n_clusters, init='Huang', n_init=5)
     clusters = km.fit_predict(data_codes)
     cluster_counts = np.bincount(clusters)
-    rare_clusters = cluster_counts < 0.05 * len(data_codes)  # Example threshold
+    rare_clusters = cluster_counts < 0.05 * len(data_codes)
     if np.any(rare_clusters):
         outlier_cluster = np.where(rare_clusters)[0][0]
         outliers = data[clusters == outlier_cluster]
@@ -88,7 +88,7 @@ def get_kmodes_outliers(data, n_clusters=3):
 
 
 # KMeans outlier method
-def get_kmeans_outliers(data, n_clusters=3, threshold=0.05):
+def get_kmeans_outliers(data, n_clusters=8, threshold=0.05):
     data_reshaped = data.values.reshape(-1, 1)
     kmeans = KMeans(n_clusters=n_clusters)
     clusters = kmeans.fit_predict(data_reshaped)
@@ -138,11 +138,12 @@ def get_dbscan_outliers(df, eps=0.5, min_samples=5):
 # Mahalanobis outliers method
 def get_mahalanobis_outliers(df, threshold=3):
     df = np.array(df)
-    df = df.reshape(-1, 1)
+    if df.ndim == 1:
+        df = df.reshape(-1, 1)
     mean = np.mean(df, axis=0)
     cov = np.cov(df, rowvar=False)
-    if cov.shape == ():
-        cov = np.array([[cov]])
+    if cov.ndim == 0:
+        cov = np.array([[cov]])  # Ensure the covariance matrix is 2D
     inv_cov = np.linalg.inv(cov)
     diff = df - mean
     md = np.sqrt(np.sum(diff @ inv_cov * diff, axis=1))
@@ -213,7 +214,6 @@ def detect_outliers(df, categoricalColumns, numericalColumns, z_threshold=3, bin
         isolation_forest_outliers = get_isolation_forest_outliers(data)
         lof_outliers = get_lof_outliers(data)
         kmeans_outliers = get_kmeans_outliers(data, n_clusters=3)
-        mahalanobis_outliers = get_mahalanobis_outliers(data, z_threshold)
 
         outliers[column] = {
             'Z-Score': z_score_outliers,
@@ -221,7 +221,6 @@ def detect_outliers(df, categoricalColumns, numericalColumns, z_threshold=3, bin
             'Forest': isolation_forest_outliers,
             'LOF': lof_outliers,
             'K-Means': kmeans_outliers,
-            'Mahalanobis': mahalanobis_outliers
         }
 
     # Categorical Features
@@ -248,8 +247,9 @@ def detect_outliers(df, categoricalColumns, numericalColumns, z_threshold=3, bin
             'DBSCAN_outliers': dbscan_outliers
         }
 
+    mahalanobis_outliers = get_mahalanobis_outliers(df[numericalColumns], z_threshold)
     ensemble_outliers = get_ensemble_outliers(df, categoricalColumns)
-    return outliers, ensemble_outliers
+    return outliers, ensemble_outliers, mahalanobis_outliers
 
 
 def calculate_percentage(anomalies, total):
@@ -280,8 +280,7 @@ def categorize_outliers(measures):
     return continuous_outliers, categorical_outliers
 
 
-def calculate_category_score(dataset, outliers, total_columns):
-    scores = []
+def calculate_category_score(dataset, outliers, total_columns, scores):
     for column, methods_in_column in outliers.items():
         total = len(dataset[column])
         for method, anomalies in methods_in_column.items():
@@ -291,7 +290,7 @@ def calculate_category_score(dataset, outliers, total_columns):
     return sum(scores) / total_columns if total_columns > 0 else 0
 
 
-def get_score(dataset, measures, ensemble_outliers, categoricalColumns, numericalColumns):
+def get_score(dataset, measures, ensemble_outliers, mahalanobis_outliers, categoricalColumns, numericalColumns):
     num_categorical = len(categoricalColumns)
     num_numerical = len(numericalColumns)
     total_columns = num_categorical + num_numerical
@@ -301,9 +300,11 @@ def get_score(dataset, measures, ensemble_outliers, categoricalColumns, numerica
 
     continuous_outliers, categorical_outliers = categorize_outliers(measures)
 
+    mahalanobis_score = calculate_percentage([a for a in mahalanobis_outliers if a], sum((dataset[numericalColumns]).apply(len)))
+
     # Calculate scores for each category
-    categorical_scores = calculate_category_score(dataset, categorical_outliers, len(categoricalColumns))
-    continuous_scores = calculate_category_score(dataset, continuous_outliers, len(numericalColumns))
+    categorical_scores = calculate_category_score(dataset, categorical_outliers, len(categoricalColumns), [])
+    continuous_scores = calculate_category_score(dataset, continuous_outliers, len(numericalColumns), [mahalanobis_score])
 
     actual_ensemble_outliers = [a for a in ensemble_outliers if a]
     ensemble_score = calculate_percentage(actual_ensemble_outliers, len(dataset))
@@ -321,5 +322,5 @@ def calculateStatistics(filepath, categoricalColumns, numericalColumns):
     # Read the CSV file
     dataset = pd.read_csv(filepath)
     convertToCategorical(dataset, categoricalColumns)
-    measures, ensemble_outliers = detect_outliers(dataset, categoricalColumns, numericalColumns)
-    return get_score(dataset, measures, ensemble_outliers, categoricalColumns, numericalColumns)
+    measures, ensemble_outliers, mahalanobis_outliers = detect_outliers(dataset, categoricalColumns, numericalColumns)
+    return get_score(dataset, measures, ensemble_outliers, mahalanobis_outliers, categoricalColumns, numericalColumns)
